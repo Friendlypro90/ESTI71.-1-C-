@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Vida Saludable</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#2e7d32;
+    color:white;
+    min-height:100vh;
+    transition:background 1.2s ease;
+}
+
+.hoja{
+    position:absolute;
+    width:130px;
+    height:65px;
+    background:rgba(255,255,255,0.15);
+    border-radius:0 100px;
+}
+.h1{top:40px;left:30px;transform:rotate(25deg);}
+.h2{top:200px;right:40px;transform:rotate(-20deg);}
+.h3{bottom:120px;left:80px;transform:rotate(45deg);}
+
+.contenedor{
+    text-align:center;
+    padding:40px;
+}
+
+.botones{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+}
+
+button{
+    padding:15px 25px;
+    font-size:16px;
+    border:none;
+    border-radius:15px;
+    background:#66bb6a;
+    color:#1b5e20;
+    font-weight:bold;
+    cursor:pointer;
+}
+button:hover{background:#81c784;}
+
+.equipo-btn{
+    background:#fbc02d;
+    color:#3e2723;
+    font-size:18px;
+}
+
+.contenido{
+    display:none;
+    max-width:900px;
+    margin:auto;
+    background:rgba(0,0,0,0.3);
+    padding:25px;
+    border-radius:15px;
+    opacity:0;
+    transform:scale(0.9);
+    transition:opacity 1s ease, transform 1s ease;
+}
+
+.contenido.activo{
+    opacity:1;
+    transform:scale(1);
+}
+
+.regresar{
+    margin-top:20px;
+    background:#aed581;
+}
+
+input, textarea{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border-radius:8px;
+    border:none;
+}
+
+.comentario{
+    background:rgba(255,255,255,0.2);
+    padding:10px;
+    border-radius:8px;
+    margin-top:10px;
+}
+
+.marca-agua{
+    position:fixed;
+    bottom:10px;
+    right:15px;
+    color:rgba(255,255,255,0.6);
+    font-size:14px;
+    font-weight:bold;
+    pointer-events:none;
+}
+
+/* EQUIPO */
+.equipo{
+    background:linear-gradient(135deg,#b8860b,#ffd700);
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hoja h1"></div>
+<div class="hoja h2"></div>
+<div class="hoja h3"></div>
+
+<!-- INICIO -->
+<div class="contenedor" id="inicio">
+    <h1>Vida Saludable</h1>
+    <div class="botones">
+        <button onclick="mostrar('plato')">🥗 Plato del Bien Comer</button>
+        <button onclick="mostrar('jarra')">🥤 Jarra del Buen Beber</button>
+        <button onclick="mostrar('dietas')">🍎 Dietas</button>
+        <button onclick="mostrar('ejercicio')">🏃 Ejercicio</button>
+        <button onclick="mostrar('comentarios')">💬 Preguntas</button>
+        <button class="equipo-btn" onclick="mostrarEquipo()">⭐ EQUIPO</button>
+    </div>
+</div>
+
+<!-- PLATO -->
+<div class="contenido" id="plato">
+<h2>Plato del Bien Comer</h2>
+<p>
+El Plato del Bien Comer es una guía que ayuda a tener una alimentación correcta y equilibrada.
+Divide los alimentos en tres grupos:
+</p>
+<ul>
+<li><b>Verduras y frutas:</b> aportan vitaminas, minerales y fibra. Se deben consumir en mayor cantidad.</li>
+<li><b>Cereales:</b> proporcionan energía para las actividades diarias.</li>
+<li><b>Leguminosas y alimentos de origen animal:</b> aportan proteínas para el crecimiento.</li>
+</ul>
+<p>
+Seguir esta guía ayuda a prevenir enfermedades como obesidad y diabetes.
+</p>
+<button class="regresar" onclick="volver()">⬅ Regresar</button>
+</div>
+
+<!-- JARRA -->
+<div class="contenido" id="jarra">
+<h2>Jarra del Buen Beber</h2>
+<p>
+La Jarra del Buen Beber indica qué bebidas y en qué cantidad se deben consumir diariamente.
+</p>
+<ul>
+<li><b>Agua natural:</b> 6 a 8 vasos al día.</li>
+<li><b>Leche baja en grasa:</b> aporta calcio.</li>
+<li><b>Bebidas sin azúcar:</b> tés o aguas naturales.</li>
+<li><b>Evitar refrescos:</b> exceso de azúcar.</li>
+</ul>
+<p>
+Ayuda a mantener una buena hidratación y una vida saludable.
+</p>
+<button class="regresar" onclick="volver()">⬅ Regresar</button>
+</div>
+
+<!-- DIETAS -->
+<div class="contenido" id="dietas">
+<h2>Dietas</h2>
+<p>
+Una dieta saludable es aquella que aporta todos los nutrientes que el cuerpo necesita.
+</p>
+<h3>Dieta correcta</h3>
+<ul>
+<li>Incluye todos los grupos de alimentos.</li>
+<li>Es variada y equilibrada.</li>
+<li>Respeta horarios.</li>
+</ul>
+<h3>Dieta incorrecta</h3>
+<ul>
+<li>Exceso de comida chatarra.</li>
+<li>Saltarse comidas.</li>
+<li>Eliminar grupos de alimentos.</li>
+</ul>
+<button class="regresar" onclick="volver()">⬅ Regresar</button>
+</div>
+
+<!-- EJERCICIO -->
+<div class="contenido" id="ejercicio">
+<h2>Ejercicio</h2>
+<p>
+Hacer ejercicio al menos <b>una hora diaria</b> ayuda a mantener el cuerpo sano.
+</p>
+<ul>
+<li>Mejora la salud del corazón.</li>
+<li>Fortalece músculos y huesos.</li>
+<li>Reduce el estrés.</li>
+</ul>
+<h3>Consecuencias del sedentarismo</h3>
+<ul>
+<li>Aumento de peso.</li>
+<li>Problemas cardiovasculares.</li>
+<li>Cansancio constante.</li>
+</ul>
+<button class="regresar" onclick="volver()">⬅ Regresar</button>
+</div>
+
+<!-- COMENTARIOS -->
+<div class="contenido" id="comentarios">
+<h2>Preguntas y Comentarios</h2>
+<input id="nombre" placeholder="Nombre">
+<textarea id="mensaje" placeholder="Pregunta o comentario"></textarea>
+<button onclick="comentar()">Enviar</button>
+<div id="lista"></div>
+<button class="regresar" onclick="volver()">⬅ Regresar</button>
+</div>
+
+<!-- EQUIPO -->
+<div class="contenido equipo" id="equipo">
+<h2>⭐ EQUIPO</h2>
+<ol>
+<li>Kevin Alexis</li>
+<li>Sebastián Daniel</li>
+<li>Diego Jared</li>
+<li>William Luna</li>
+<li>Cesar Leonardo</li>
+<li>Luis Alberto</li>
+</ol>
+<button class="regresar" onclick="volver()">⬅ Regresar</button>
+</div>
+
+<div class="marca-agua">ESTI 71 1° "C"</div>
+
+<script>
+function mostrar(id){
+    document.body.style.background="#2e7d32";
+    document.getElementById("inicio").style.display="none";
+    document.querySelectorAll(".contenido").forEach(c=>{
+        c.style.display="none";
+        c.classList.remove("activo");
+    });
+    let sec=document.getElementById(id);
+    sec.style.display="block";
+    setTimeout(()=>sec.classList.add("activo"),50);
+}
+
+function mostrarEquipo(){
+    document.body.style.background="#b8860b";
+    mostrar("equipo");
+}
+
+function volver(){
+    document.body.style.background="#2e7d32";
+    document.querySelectorAll(".contenido").forEach(c=>c.style.display="none");
+    document.getElementById("inicio").style.display="block";
+}
+
+function comentar(){
+    let n=nombre.value,m=mensaje.value;
+    if(!n||!m) return alert("Completa los campos");
+    lista.innerHTML+=`<div class="comentario"><b>${n}</b>: ${m}</div>`;
+    mensaje.value="";
+}
+</script>
+
+</body>
+</html>
